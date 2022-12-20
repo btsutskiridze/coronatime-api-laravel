@@ -20,9 +20,7 @@
 
 <body>
     <div class="flex items-center flex-col justify-center gap-6 w-full h-full min-h-screen ">
-        <h1 class="text-green-800 font-bold text-8xl">Coronatime API</h1>
-        <a href="{{ route('swagger') }}" class="text-red-800 text-2xl font-bold underline cursor-pointer">view
-            swagger</a>
+        <h1 class="text-green-800 font-bold text-8xl">Swagger</h1>
     </div>
 </body>
 
