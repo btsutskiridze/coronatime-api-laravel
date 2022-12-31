@@ -22,7 +22,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        return $this->respondWithToken($user);
+        return $this->respondWithToken($user, 1);
     }
 
     public function login(Request $request)
@@ -33,7 +33,7 @@ class AuthController extends Controller
             return response()->json(['error' => 'Invalid email or password'], 422);
         }
         $user = auth()->user();
-        return $this->respondWithToken($user);
+        return $this->respondWithToken($user, 1);
     }
 
 
@@ -42,10 +42,10 @@ class AuthController extends Controller
         return $request->user();
     }
 
-    private function respondWithToken($user)
+    private function respondWithToken($user, $days)
     {
         $success['token'] = $user->createToken('access_token')->plainTextToken;
-
+        $success['expires_in'] = $days;
         return response()->json([
             'success'=>true,
             'data'=>$success,
